@@ -1,0 +1,32 @@
+body{
+font-family: Arial, sans-serif;
+margin:0;
+background:#0e0e0e;
+color:white;
+text-align:center;
+}
+
+header{
+padding:20px;
+background:black;
+}
+
+nav a{
+margin:0 15px;
+color:white;
+text-decoration:none;
+}
+
+.hero{
+padding:120px 20px;
+background:linear-gradient(45deg,#ff4d6d,#6a00f4);
+}
+
+section{
+padding:80px 20px;
+}
+
+footer{
+padding:40px;
+background:black;
+}
