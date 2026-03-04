@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Vivid Hues</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -14,40 +17,62 @@ margin:0;
 font-family:Inter,system-ui,sans-serif;
 background:black;
 color:white;
+line-height:1.9;
+letter-spacing:0.02em;
+-webkit-font-smoothing:antialiased;
 }
+
+/* HERO */
 
 .hero{
 height:100vh;
 background:
-linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.7)),
+linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.75)),
 url("hero.jpg");
 background-size:cover;
 background-position:center;
 display:flex;
-flex-direction:column;
 align-items:center;
 justify-content:center;
 text-align:center;
+padding:40px;
+}
+
+.hero-inner{
+max-width:800px;
 }
 
 h1{
-font-size:60px;
-letter-spacing:6px;
+font-size:72px;
+letter-spacing:12px;
+margin:0;
+font-weight:600;
 }
 
+.tag{
+margin-top:20px;
+opacity:0.8;
+font-size:18px;
+letter-spacing:4px;
+}
+
+/* SOCIAL BUTTONS */
+
 .links{
-margin-top:40px;
+margin-top:50px;
 display:flex;
-gap:16px;
+gap:18px;
 flex-wrap:wrap;
 justify-content:center;
 }
 
 .links a{
-border:1px solid white;
-padding:10px 22px;
+border:1px solid rgba(255,255,255,0.6);
+padding:12px 28px;
 text-decoration:none;
 color:white;
+font-size:14px;
+letter-spacing:2px;
 transition:0.3s;
 }
 
@@ -56,102 +81,243 @@ background:white;
 color:black;
 }
 
+/* SECTIONS */
+
 .section{
 max-width:900px;
 margin:auto;
-padding:80px 20px;
+padding:110px 25px;
+text-align:center;
 }
 
-.videos{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:30px;
+h2{
+font-weight:500;
+letter-spacing:6px;
+margin-bottom:40px;
+font-size:28px;
 }
 
-iframe{
+.bio{
+font-size:18px;
+opacity:0.9;
+max-width:720px;
+margin:auto;
+}
+
+/* SPOTIFY */
+
+.spotify{
+margin-top:50px;
+}
+
+/* VIDEO CARD */
+
+.video-card{
+max-width:700px;
+margin:auto;
+}
+
+.video-thumb{
+position:relative;
+cursor:pointer;
+}
+
+.video-thumb img{
 width:100%;
-height:260px;
-border:none;
+border-radius:8px;
+transition:0.4s;
 }
+
+.video-thumb:hover img{
+transform:scale(1.04);
+}
+
+.play{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+font-size:40px;
+opacity:0.9;
+}
+
+/* YOUTUBE BUTTON */
+
+.youtube-link{
+margin-top:30px;
+}
+
+.youtube-link a{
+border:1px solid white;
+padding:12px 28px;
+text-decoration:none;
+color:white;
+letter-spacing:2px;
+transition:0.3s;
+}
+
+.youtube-link a:hover{
+background:white;
+color:black;
+}
+
+/* CONTACT */
+
+.contact{
+font-size:18px;
+margin-top:30px;
+line-height:2;
+}
+
+/* FOOTER */
 
 footer{
 text-align:center;
-padding:60px;
+padding:90px 20px;
 opacity:0.6;
+font-size:14px;
+letter-spacing:2px;
 }
 
-@media(max-width:800px){
-.videos{
-grid-template-columns:1fr;
+/* FILM GRAIN */
+
+body:after{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:url("https://grainy-gradients.vercel.app/noise.svg");
+opacity:0.15;
+pointer-events:none;
 }
+
+/* MOBILE */
+
+@media (max-width:800px){
+
+h1{
+font-size:42px;
+letter-spacing:6px;
+}
+
 }
 
 </style>
+
 </head>
 
 <body>
 
 <section class="hero">
 
+<div class="hero-inner">
+
 <h1>Vivid Hues</h1>
+
+<p class="tag">COLORFUL ELECTRO POP</p>
 
 <div class="links">
 
-<a href="https://open.spotify.com/artist/7dyPULJLT7kzLCJ5atFZvK?si=JhAACrX1T4yAi93fJIUukQ">Spotify</a>
+<a href="https://open.spotify.com/artist/7dyPULJLT7kzLCJ5atFZvK?si=JhAACrX1T4yAi93fJIUukQ" target="_blank">SPOTIFY</a>
 
-<a href="https://www.instagram.com/vivid.hues.music/">Instagram</a>
+<a href="https://www.instagram.com/vivid.hues.music/" target="_blank">INSTAGRAM</a>
 
-<a href="https://www.tiktok.com/@vivid.hues4">TikTok</a>
+<a href="https://www.tiktok.com/@vivid.hues4" target="_blank">TIKTOK</a>
+
+</div>
 
 </div>
 
 </section>
 
 
-<section class="section">
-
-<p>
-Vivid Hues is a genre blending duo based in Sweden creating nostalgic soundscapes for the heart and the subconscious. Formed by Slovak artists Matej Smutny and Juraj Oravec the project explores their own musical language which they call colorful electro pop.
-</p>
-
-<p>
-Their music blends electronics with live instruments such as drums electric guitars and bass. On stage they recreate their sound using loopers samples and layered textures.
-</p>
-
-</section>
-
 
 <section class="section">
 
-<h2>Videos</h2>
+<div class="bio">
 
-<div class="videos">
+<p>
+Vivid Hues is a genre blending duo based in Sweden creating nostalgic soundscapes for the heart and the subconscious. The project was formed by Slovak artists Matej Smutny and Juraj Oravec as a space to explore their own musical language which they call colorful electro pop.
+</p>
 
-<iframe src="https://www.youtube.com/embed/E0Z3kFlauRU"></iframe>
+<p>
+Their music blends electronic textures with live instruments including drums electric guitars and bass. In live performances they rebuild their sound using loopers samples and layered textures turning each show into an evolving sonic landscape.
+</p>
 
-<iframe src="https://www.youtube.com/embed/3eD2cpIqC7A"></iframe>
+<p>
+With swirling synths ambient grooves and vulnerable melodies Vivid Hues drifts between dream pop alt R&B and lo fi psychedelia. Their music feels cinematic yet intimate shaped somewhere between city lights and open sea.
+</p>
+
+</div>
+
+<div class="spotify">
+
+<iframe style="border-radius:12px"
+src="https://open.spotify.com/embed/artist/7dyPULJLT7kzLCJ5atFZvK"
+width="100%" height="152">
+</iframe>
 
 </div>
 
 </section>
 
 
+
 <section class="section">
 
-<h2>Contact</h2>
+<h2>VIDEO</h2>
 
-<p>
-booking@vividhues.eu
+<div class="video-card">
+
+<a href="https://www.youtube.com/watch?v=E0Z3kFlauRU" target="_blank">
+
+<div class="video-thumb">
+
+<img src="https://img.youtube.com/vi/E0Z3kFlauRU/maxresdefault.jpg">
+
+<div class="play">▶</div>
+
+</div>
+
+</a>
+
+</div>
+
+<div class="youtube-link">
+
+<a href="https://www.youtube.com/channel/UC2XgDP5xmp_3fGQxBqkGLtw" target="_blank">
+
+VISIT YOUTUBE CHANNEL
+
+</a>
+
+</div>
+
+</section>
+
+
+
+<section class="section">
+
+<h2>CONTACT</h2>
+
+<div class="contact">
+
+booking@vividhues.eu  
 <br>
 +421 949 651 515
-</p>
+
+</div>
 
 </section>
+
 
 
 <footer>
 
-<p>Uncle George & SadMatt</p>
+<p>UNCLE GEORGE & SADMATT</p>
 
 </footer>
 
