@@ -25,6 +25,18 @@ line-height:1.9;
 letter-spacing:0.03em;
 }
 
+/* HAMBURGER BUTTON */
+
+.menu-toggle{
+display:none;
+position:fixed;
+top:18px;
+right:20px;
+font-size:30px;
+z-index:200;
+cursor:pointer;
+}
+
 /* NAV */
 
 nav{
@@ -92,46 +104,51 @@ font-size:28px;
 margin-bottom:50px;
 }
 
-/* MUSIC */
+/* MUSIC GRID */
 
 .music-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:30px;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:25px;
 }
 
-.song{
-border:1px solid rgba(255,255,255,0.2);
-padding:40px;
-transition:0.3s;
+.cover{
+width:160px;
+height:160px;
+position:relative;
+display:block;
+overflow:hidden;
+border-radius:6px;
 }
 
-.song:hover{
-border-color:white;
+.cover img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:transform 0.3s ease;
 }
 
-.song h3{
-letter-spacing:3px;
+.cover:hover img{
+transform:scale(1.05);
+}
+
+.cover span{
+position:absolute;
+bottom:8px;
+left:8px;
+font-size:11px;
+letter-spacing:2px;
+background:rgba(0,0,0,0.6);
+padding:4px 6px;
 }
 
 /* SHOWS */
 
 .shows{
-font-family:Space Mono;
+font-family:"Space Mono", monospace;
 font-size:18px;
 opacity:0.8;
-}
-
-/* VIDEO */
-
-.video img{
-width:100%;
-border-radius:8px;
-transition:0.4s;
-}
-
-.video:hover img{
-transform:scale(1.03);
 }
 
 /* LYRICS */
@@ -140,7 +157,7 @@ transform:scale(1.03);
 border-top:1px solid rgba(255,255,255,0.2);
 padding:20px;
 cursor:pointer;
-font-family:Space Mono;
+font-family:"Space Mono", monospace;
 }
 
 .lyric-text{
@@ -177,12 +194,14 @@ color:black;
 /* FOOTER */
 
 footer{
-padding:100px;
+padding:100px 20px;
 text-align:center;
 opacity:0.5;
 font-size:14px;
 letter-spacing:3px;
 }
+
+/* MOBILE */
 
 @media (max-width:800px){
 
@@ -191,8 +210,23 @@ font-size:44px;
 letter-spacing:8px;
 }
 
-.music-grid{
-grid-template-columns:1fr;
+.menu-toggle{
+display:block;
+}
+
+nav{
+display:none;
+flex-direction:column;
+position:fixed;
+top:60px;
+right:20px;
+background:black;
+padding:20px;
+gap:15px;
+}
+
+nav.show{
+display:flex;
 }
 
 }
@@ -203,7 +237,9 @@ grid-template-columns:1fr;
 
 <body>
 
-<nav>
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+<nav id="menu">
 
 <a href="#music">MUSIC</a>
 <a href="#shows">SHOWS</a>
@@ -215,14 +251,10 @@ grid-template-columns:1fr;
 
 
 <div class="hero">
-
 <div>
-
 <h1>VIVID HUES</h1>
 <p>COLORFUL ELECTRO POP</p>
-
 </div>
-
 </div>
 
 
@@ -234,31 +266,23 @@ grid-template-columns:1fr;
 <div class="music-grid">
 
 <a href="https://open.spotify.com/artist/7dyPULJLT7kzLCJ5atFZvK" target="_blank" class="cover">
-
 <img src="holiday.jpg">
 <span>HOLIDAY</span>
-
 </a>
 
 <a href="https://open.spotify.com/artist/7dyPULJLT7kzLCJ5atFZvK" target="_blank" class="cover">
-
 <img src="statusquo.jpg">
 <span>STATUS QUO</span>
-
 </a>
 
 <a href="https://open.spotify.com/artist/7dyPULJLT7kzLCJ5atFZvK" target="_blank" class="cover">
-
 <img src="sogone.jpg">
 <span>SO GONE</span>
-
 </a>
 
 <a href="https://open.spotify.com/artist/7dyPULJLT7kzLCJ5atFZvK" target="_blank" class="cover">
-
 <img src="heaven2floors.jpg">
 <span>HEAVEN HAS 2 FLOORS</span>
-
 </a>
 
 </div>
@@ -272,9 +296,7 @@ grid-template-columns:1fr;
 <h2>SHOWS</h2>
 
 <div class="shows">
-
 TO BE ANNOUNCED
-
 </div>
 
 </section>
@@ -286,13 +308,9 @@ TO BE ANNOUNCED
 <h2>ABOUT</h2>
 
 <p>
-
 Vivid Hues is a genre blending duo based in Sweden creating nostalgic soundscapes for the heart and the subconscious.
-
 Formed by Slovak artists Matej Smutny and Juraj Oravec the project explores their own musical language which they call colorful electro pop.
-
 Their music blends electronics with live instruments including drums electric guitars and bass while their performances use loopers samples and layered textures.
-
 </p>
 
 </section>
@@ -303,206 +321,7 @@ Their music blends electronics with live instruments including drums electric gu
 
 <h2>LYRICS</h2>
 
-
-<div class="lyric" onclick="toggleLyrics(this)">
-HOLIDAY
-
-<div class="lyric-text">
-
-Tell my mama I’m not coming for her birthday party
-Got my mind in a mess, body screaming, sweaty
-Don’t you worry, don’t you think I’ll never see you, buddy
-Really should have seen it coming
-
-Text my dad it’s gonna take some time to see each other
-’Cause my vision’s blurry, I’m not feeling ready
-I’m not feeling ready
-Will I ever be
-
-We’ve been falling out of heaven’s door
-We’ve been falling out of heaven’s door
-(Really should have seen it coming)
-
-Against the wall
-How many times we’ve tried to keep our self-control
-
-They say nature helps so I stare into a painting
-I can’t help myself and it gets me more frustrated
-
-Tik tok, knock knock, are you there
-It’s no secret you don’t care
-
-We’ve been falling out of heaven’s door
-(Really should have seen it coming)
-Against the wall
-How many times we’ve tried to keep our self-control
-
-We’ve been falling out of heaven’s door
-(Really should have seen it coming)
-Against the wall
-How many times we’ve tried to keep our self-control
-
-I think I’ll take myself on holiday
-I know there might be better days for me
-I’m floating on the rusty chain
-All I can feel is glory
-
-All I can feel is
-(All I can feel is glory, all I can feel is, all I can feel is glory, all I can feel is)
-
-Oh, oh, oh
-Oh, oh, oh
-
-</div>
-</div>
-
-
-
-<div class="lyric" onclick="toggleLyrics(this)">
-STATUS QUO
-
-<div class="lyric-text">
-
-Get up, clock in, stay in line, is all they’re ever used to say
-Never take a step too far, living just to fade away
-Keep the straight lines to yourselves I’m not afraid to make a turn
-They will call you out, why don’t you do what you’re told
-
-Over the hills I’m already gone
-Breaking out of your control
-I’ll do the dancing all on my own
-
-I don’t count nine to five
-At the same place every night
-Get drunk just wasting time
-Not only work for the weekends
-
-I don’t live by design
-Every day repeated sequence
-Press play pause and rewind
-No I don’t follow status quo
-
-Oh oh oh oh oh oh
-Oh oh oh oh oh oh
-Get drunk just wasting time
-Not only work for the weekends
-
-Oh oh oh oh oh oh
-Oh oh oh oh oh oh
-Press play pause and rewind
-No I don’t follow status quo
-
-They’re all stuck on repeat, same old scene, same dead-end routine
-Watch the clock just tick away
-Sleepwalking through a faded dream
-
-Counting the hours, the minutes, the seconds
-But what is the point when you got no direction
-Following the crowd heading straight for nowhere
-
-Over the hills I’m already gone
-Breaking out of your control
-I’ll do the dancing all on my own
-
-I don’t count nine to five
-At the same place every night
-Get drunk just wasting time
-Not only work for the weekends
-
-I don’t live by design
-Every day repeated sequence
-Press play pause and rewind
-No I don’t follow status quo
-
-</div>
-</div>
-
-
-
-<div class="lyric" onclick="toggleLyrics(this)">
-SO GONE
-
-<div class="lyric-text">
-
-Can't stand the fight
-The battle raging in me
-
-Leaving the hype
-Never felt so real
-
-We went far enough, now I wonder
-If you hear the thunder
-If you feel the same
-
-Not regretting one single moment
-I am still decoding
-The rules of this losing game
-
-I wanna know why it feels so hard
-To let my head win over my heart
-Why all the right moves felt so wrong
-Now we’re strangers
-
-YOU'RE SO GONE
-
-Even if it hurts
-Gotta drink down the truth
-
-We flew for a while
-With no parachute
-
-Inescapable feeling
-Of no sight of healing
-We were so tired of waiting
-
-I wanna know why it feels so hard
-To let my head win over my heart
-Why all the right moves felt so wrong
-Now we’re strangers
-
-YOU'RE SO GONE
-
-</div>
-</div>
-
-
-
-<div class="lyric" onclick="toggleLyrics(this)">
-HEAVEN HAS 2 FLOORS
-
-<div class="lyric-text">
-
-I woke up in the middle of a dream
-Where the sky was close to me
-Someone said you made it
-But I paused before the golden swing
-
-Na na na na
-Na na na na na na na
-
-Stuck in my head
-What if Heaven has two floors
-
-I know there must be two
-One for me and one for you
-One for old dreams, one for new
-
-Love on the second floor
-
-Tell me honey what if we
-If we're not able to make it hand by hand to Heaven
-And you'd go alone
-What if I'd do the second floor
-
-I know there must be two
-One for me and one for you
-One for old dreams, one for new
-
-Love on the second floor
-
-</div>
-</div>
-
+<!-- Tu nechaj všetky lyric bloky ktoré už máš -->
 
 </section>
 
@@ -515,11 +334,8 @@ Love on the second floor
 <div class="socials">
 
 <a href="https://open.spotify.com/artist/7dyPULJLT7kzLCJ5atFZvK" target="_blank">SPOTIFY</a>
-
 <a href="https://www.instagram.com/vivid.hues.music/" target="_blank">INSTAGRAM</a>
-
 <a href="https://www.tiktok.com/@vivid.hues4" target="_blank">TIKTOK</a>
-
 <a href="https://www.youtube.com/channel/UC2XgDP5xmp_3fGQxBqkGLtw" target="_blank">YOUTUBE</a>
 
 </div>
@@ -529,17 +345,8 @@ Love on the second floor
 
 <footer>
 
-UNCLE GEORGE & SADMATT
-
-<footer>
-
 <p>UNCLE GEORGE & SADMATT</p>
-
-<p style="margin-top:20px">
-
-hello@vividhues.eu
-
-</p>
+<p style="margin-top:20px">hello@vividhues.eu</p>
 
 </footer>
 
@@ -547,7 +354,6 @@ hello@vividhues.eu
 <script>
 
 function toggleLyrics(el){
-
 let text = el.querySelector(".lyric-text")
 
 if(text.style.display==="block"){
@@ -555,7 +361,10 @@ text.style.display="none"
 }else{
 text.style.display="block"
 }
+}
 
+function toggleMenu(){
+document.getElementById("menu").classList.toggle("show")
 }
 
 </script>
