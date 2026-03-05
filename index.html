@@ -8,7 +8,7 @@
 
 <title>Vivid Hues</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Mono&display=swap"rel="stylesheet">
 
 <style>
 
@@ -25,32 +25,34 @@ line-height:1.8;
 letter-spacing:0.03em;
 }
 
-/* MOBILE MENU BUTTON */
+/* HEADER */
 
-.menu-toggle{
-display:none;
-position:fixed;
-top:18px;
-right:20px;
-font-size:28px;
-z-index:200;
-cursor:pointer;
-color:white;
-}
-
-/* NAV */
-
-nav{
+.header{
 position:fixed;
 top:0;
 width:100%;
-display:flex;
-justify-content:center;
-gap:40px;
-padding:20px;
-background:rgba(0,0,0,0.7);
+background:rgba(0,0,0,0.75);
 backdrop-filter:blur(10px);
-z-index:100;
+z-index:1000;
+transition:transform 0.3s ease;
+}
+
+.header.hidden{
+transform:translateY(-100%);
+}
+
+.nav-container{
+max-width:900px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px;
+}
+
+nav{
+display:flex;
+gap:35px;
 }
 
 nav a{
@@ -62,6 +64,14 @@ letter-spacing:3px;
 
 nav a:hover{
 opacity:0.6;
+}
+
+/* HAMBURGER */
+
+.menu-toggle{
+display:none;
+font-size:28px;
+cursor:pointer;
 }
 
 /* HERO */
@@ -90,7 +100,7 @@ letter-spacing:4px;
 opacity:0.7;
 }
 
-/* SECTION */
+/* SECTIONS */
 
 section{
 max-width:900px;
@@ -210,10 +220,9 @@ display:block;
 nav{
 display:none;
 flex-direction:column;
-position:fixed;
-top:60px;
-right:0;
-width:200px;
+position:absolute;
+top:70px;
+right:20px;
 background:black;
 padding:20px;
 gap:15px;
@@ -231,7 +240,10 @@ display:flex;
 
 <body>
 
-<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+<header class="header" id="header">
+
+<div class="nav-container">
 
 <nav id="menu">
 
@@ -243,6 +255,12 @@ display:flex;
 
 </nav>
 
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+</div>
+
+</header>
+
 
 <div class="hero">
 <div>
@@ -250,7 +268,6 @@ display:flex;
 <p>COLORFUL ELECTRO POP</p>
 </div>
 </div>
-
 
 
 <section id="music">
@@ -280,7 +297,6 @@ display:flex;
 </section>
 
 
-
 <section id="shows">
 
 <h2>SHOWS</h2>
@@ -292,23 +308,21 @@ TO BE ANNOUNCED
 </section>
 
 
-
 <section id="about">
 
 <h2>ABOUT</h2>
 
 <p>
 
-Vivid Hues is a genre blending duo based in Sweden creating nostalgic soundscapes for the heart and the subconscious.
+Vivid Hues is a genre-blurring duo based in Sweden creating lush nostalgic soundscapes for the heart and the subconscious.
 
-Formed by Slovak artists Matej Smutny and Juraj Oravec the project explores their own musical language which they call colorful electro pop.
+Formed by Slovak artists Matej Smutny and Juraj Oravec the project explores their own musical language called colorful electro pop.
 
-Their music blends electronics with live instruments including drums electric guitars and bass while their performances use loopers samples and layered textures.
+Their music blends electronics with live instruments including drums electric guitars and bass while performances use loopers samples and layered textures.
 
 </p>
 
 </section>
-
 
 
 <section id="lyrics">
@@ -585,6 +599,23 @@ text.style.display="block"
 function toggleMenu(){
 document.getElementById("menu").classList.toggle("show")
 }
+
+let lastScroll = 0
+const header = document.getElementById("header")
+
+window.addEventListener("scroll", () => {
+
+let currentScroll = window.pageYOffset
+
+if(currentScroll > lastScroll && currentScroll > 100){
+header.classList.add("hidden")
+}else{
+header.classList.remove("hidden")
+}
+
+lastScroll = currentScroll
+
+})
 
 </script>
 
